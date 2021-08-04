@@ -1,0 +1,33 @@
+﻿
+@model LoginTask.Models.UserModel
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <style>
+        span {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <br /><br /><br />
+        @using (Html.BeginForm())
+        {
+            @Html.LabelFor(x => x.UserName)
+            @Html.EditorFor(x => x.UserName) @Html.ValidationMessageFor(x => x.UserName)<br /><br />
+
+            @Html.LabelFor(x=> x.Password)
+            @Html.PasswordFor(x => x.Password) @Html.ValidationMessageFor(x => x.Password)<br /><br />
+
+            <input type="submit" value="Login" />
+            @ViewBag.error
+        }
+    </div>
+</body>
+</html>
