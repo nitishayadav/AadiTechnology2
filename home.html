@@ -1,0 +1,134 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="jquery\jquery.js"></script>
+    <script src="bootstrap-4.0.0-alpha.6-dist\js\bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap-4.0.0-alpha.6-dist\css\bootstrap.min.css">
+
+    <style>
+        body {
+            background: dodgerblue;
+        }
+
+        form {
+            width: 400px;
+            margin: 60px auto;
+            background: white;
+            height: 85%;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .center {
+            display: block;
+            width: 384px;
+            height: 140px;
+            margin: 0;
+            border-radius: 4px;
+        }
+
+        label {
+            border: none;
+            display: block;
+            position: relative;
+            margin: 30px 0px;
+        }
+
+        .input {
+            width: 80%;
+            padding: 5px;
+            background: transparent;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid grey;
+            margin:20px;
+        }
+
+        .button {
+            background-color: rgb(56,176,16);
+            color: white;
+            float: left;
+            margin-left: 40px;
+            border: none;
+            height: 30px;
+            width: 70px;
+            border-radius: 2.5px;
+        }
+
+      
+        .dropdown {
+            width: 40%;
+            padding: 5px;
+            background: transparent;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid grey;
+        }
+
+        select {
+            color: grey;
+        }
+
+        h3 {
+            float: left;
+            margin: 20px 0px 20px 15px;
+            color: grey;
+        }
+
+        .form-group {
+            margin: 10px;
+            color:grey;
+        }
+
+        .form-control {
+            border: none;
+            border-bottom: 1px solid grey;
+            width:94%;
+            margin:10px;
+        }
+        option{
+            color:grey;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <form autocomplete="on" action="home.html">
+        <div>
+            <img src="building.jpg" class="rounded  mx-auto d-block img-fluid" style="height:140px; width:400px">
+        </div>
+        <h3>Registration Form</h3>
+        <input type="text" class="form-control " name="name" placeholder="Name" required="required" maxlength="30">
+        <div class="row">
+            <div class="col-sm-6"><input type="date" class="form-control" name="birthdate" placeholder="Birth Date" required="required"></div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <select class="form-control" id="gender">
+                        <option>Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+        <input type="text" class="form-control" name="registrationcode" placeholder="Registration Code" required="required">
+        <div class="form-group">
+            <select class="form-control" id="class" required="required">
+                <option></option>
+                <option>Class</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+        </div>
+        <div class="form-group" style="margin:25px;">
+            <input type="submit" class="btn btn-success float-left " value="Submit">
+            <input type="reset" class="btn btn-success float-left d-lg-none d-xl-block " value="Reset" style="margin-left:8px;">
+        </div>
+    </form>
+</body>
+</html>

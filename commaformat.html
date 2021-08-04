@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery\jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#textbox").mouseleave(function () {
+                var x = $('#textbox').val();
+                $('#textbox').val(addCommas(x));
+            });
+        });
+        function addCommas(x) {
+            var parts = x.toString().split(".");
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return parts.join(".");
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="textbox" placeholder="Enter Number">
+
+</body>
+</html>
