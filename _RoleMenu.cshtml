@@ -1,0 +1,43 @@
+﻿@model LoginTask.Models.UserModel
+    <ul class="nav navbar-nav">
+
+        @if (Model != null)
+        {
+
+            <li> @Html.ActionLink("Dear -" + Model.UserName, "GetProfile", "Home", new { Id = Model.Id }, null)</li>
+
+            if (Model.UserRole1.Role == "admin" || Model.UserRole1.Role == "manufacturer1" || Model.UserRole1.Role == "owner")
+            {
+                // <li> @Html.ActionLink("Customer Details", "GetCustomerDetail", "Home")</li>
+
+                <li> @Html.ActionLink("Course Details", "GetCourseDetail", "Home")</li>
+                <li> @Html.ActionLink("Add Course", "Create", "Home")</li>
+
+                <li> @Html.ActionLink("Add Topic", "CreateTopic", "Home")</li>
+                <li> @Html.ActionLink("Topic List", "TopicList", "Home")</li>
+
+                <li> @Html.ActionLink("Add SubTopic", "CreateSubTopic", "Home")</li>
+                <li> @Html.ActionLink("SubTopic List", "SubTopicList", "Home")</li>
+
+
+                <li> @Html.ActionLink("Task Detail", "TaskList", "Home")</li>
+                <li> @Html.ActionLink("Add Task", "CreateTask", "Home")</li>
+
+            }
+
+
+            if (Model.UserRole1.Role == "admin")
+            {
+                // <li> @Html.ActionLink("Manufacturer Details", "GetManufacturerDetail", "Home")</li>
+            }
+
+
+            if (Model.UserRole1.Role == "admin" || Model.UserRole1.Role == "manufacturer1")
+            {
+                //<li> @Html.ActionLink("Owner Details", "GetOwnerDetail", "Home")</li>
+            }
+
+        }
+        <li> @Html.ActionLink("LogOut", "LogOut", "Account")</li>
+
+    </ul>
