@@ -1,0 +1,14 @@
+﻿@model LoginTask.Models.TopicModel
+@{
+    ViewBag.Title = "EditTopic";
+}
+
+<h2>EditTopic</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.CourseId)
+    @Html.Label("Enter Topic Name")
+    @Html.EditorFor(x => x.TopicName)
+    <input type="submit" value="Save" />
+}

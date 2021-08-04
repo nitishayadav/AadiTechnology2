@@ -1,0 +1,18 @@
+﻿@model LoginTask.Models.TopicModel
+@{
+    ViewBag.Title = "CreateTopic";
+}
+
+<h2>CreateTopic</h2>
+
+@using (Html.BeginForm())
+{
+   // @Html.HiddenFor(x =>x.CourseId)
+    //@Html.HiddenFor(x =>x.TopicId)
+    @Html.Label("Select Course") @Html.DropDownListFor(x => x.CourseId, new SelectList(ViewBag.data, "Id", "CourseName"))
+    <br />
+    @Html.Label("Topic Name") @Html.EditorFor(x => x.TopicName)
+    <br />
+    <input type="submit" value="Save" />
+}
+

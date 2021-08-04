@@ -1,0 +1,108 @@
+﻿@model LoginTask.Models.DailyTask1Model
+@{
+    ViewBag.Title = "CreateTask";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+
+        $(document).ready(function () {
+
+            $("#SubTopic_Topic_CourseId").change(function () {
+
+                var courseId = $("#SubTopic_Topic_CourseId").val();
+                //var topic = $("#SubTopic_TopicId").text("select topic");
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("TopicListByCourseId")' + "?CourseId=" + courseId,
+                //contentType: "application/json",
+                dataType: "json",
+                 //contentType: "html",
+
+                success: function (data) {
+                    //console.log(data);
+                    //data = JSON.parse(data);
+                    // alert("Data has been added successfully.");
+                    $("#SubTopic_TopicId").text("select topic");
+                    $("#SubTopic_TopicId")
+                        .append($('<option>', { value: 0 })
+                            .text("Select Topic"));
+                   
+                    //$("#SubTopic_TopicId").append(data);
+                    $.each(data, function (value, text) {
+                        //var topic = JSON.parse(text);
+
+                        $("#SubTopic_TopicId")
+                            .append($('<option>', { value: text.TopicId })
+                                .text(text.TopicName));
+                       // $("#SubTopicId").empty();
+                    });
+
+                    $("#SubTopicId").empty();
+                },
+                error: function (data) {
+                    alert(data);
+                }
+
+               
+            });
+            });
+
+            $("#SubTopic_TopicId").change(function () {
+
+                var topicId = $("#SubTopic_TopicId").val();
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("SubTopicListByTopicId")' + "?TopicId=" + topicId,
+                //contentType: "application/json",
+                dataType: "json",
+                 //contentType: "html",
+
+                success: function (data) {
+                    //console.log(data);
+                    //data = JSON.parse(data);
+                    // alert("Data has been added successfully.");
+                    //$("#SubTopic_Id").empty();
+                    //$("#SubTopic_TopicId").append(data);
+                    $("#SubTopicId").text("select Subtopic");
+                    $("#SubTopicId")
+                        .append($('<option>', { value: 0 })
+                            .text("Select Subtopic"));
+                    $.each(data, function (value, text) {
+                        //var topic = JSON.parse(text);
+                        $("#SubTopicId")
+                            .append($('<option>', { value: text.Id })
+                                .text(text.SubTopicName));
+                    });
+
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            });
+        });
+
+    });
+</script>
+<h2>CreateTask</h2>
+
+@using (Html.BeginForm())
+
+{
+    // @Html.HiddenFor(x => x.Id)
+    @Html.Label("Select Course") @Html.DropDownListFor(x => x.SubTopic.Topic.CourseId, new SelectList(ViewBag.data, "Id", "CourseName"),"Select Course", new { @class = "form-control" })
+    <br />
+    // @Html.HiddenFor(x => x.SubTopic.Topic.TopicId)
+    @Html.Label("Select Topic") @Html.DropDownListFor(x => x.SubTopic.TopicId, new SelectList(""),"Select Topic", new { @class="form-control"})
+    <br />
+    // @Html.HiddenFor(x => x.Id)
+    @Html.Label("Select SubTopic") @Html.DropDownListFor(x => x.SubTopicId, new SelectList("") ,"Select Sub Topic", new { @class = "form-control" })
+    <br />
+    @Html.Label("Start Time") @Html.EditorFor(x => x.StartTime, new { @class = "form-control" })
+    <br />
+    @Html.Label("End Time") @Html.EditorFor(x => x.EndTime , new { @class = "form-control" })
+    <br />
+    @Html.Label("Estimated Hour") @Html.EditorFor(x => x.EstimatedHr, new { @class = "form-control" })
+    <br />
+    <br />
+    <input type="submit" value="Save" />
+}

@@ -1,0 +1,15 @@
+﻿@model LoginTask.Models.SubTopicModel
+@{
+    ViewBag.Title = "EditSubTopic";
+}
+
+<h2>EditSubTopic</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.TopicId)
+    @Html.HiddenFor(x =>x.Id)
+    @Html.Label("Enter SubTopic Name")
+    @Html.EditorFor(x => x.SubTopicName)
+    <input type="submit" value="Save" />
+}

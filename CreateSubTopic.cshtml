@@ -1,0 +1,18 @@
+﻿@model LoginTask.Models.SubTopicModel
+@{
+    ViewBag.Title = "CreateSubTopic";
+}
+
+<h2>CreateSubTopic</h2>
+
+
+@using (Html.BeginForm())
+ { 
+    @Html.Label("Select Course") @Html.DropDownListFor(x => x.Topic.CourseId, new SelectList(ViewBag.content, "Id", "CourseName"))
+    
+    @Html.Label("Select Topic") @Html.DropDownListFor(x => x.TopicId, new SelectList(ViewBag.data, "TopicId", "TopicName"))
+    <br />
+    @Html.Label("SubTopic Name") @Html.EditorFor(x => x.SubTopicName)
+    <br />
+    <input type="submit" value="Save" />
+    }

@@ -1,0 +1,20 @@
+﻿@model LoginTask.Models.ProfileModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetProfile</title>
+</head>
+<body>
+    <div>
+        <h1>Profile Details</h1>
+        <h2>Name - @Model.UserName</h2>
+        <h2>Role - @Model.Role.Role</h2>
+    </div>
+</body>
+</html>

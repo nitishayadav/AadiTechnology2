@@ -1,0 +1,88 @@
+﻿@model IEnumerable<LoginTask.Models.CourseModel>
+
+@{
+    ViewBag.Title = "GetCourseDetail";
+}
+
+    <h2>GetCourseDetail</h2>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+    $("#courseNamePieChart").click(function () {
+        GenerateRuntimeGraph();
+        //alert("clicked");
+    });
+   
+    function GenerateRuntimeGraph() {
+        var CourseName = $('#courseName').val();
+        var count = $('#CourseCount').val();
+         if (CourseName == "") {
+           count = 0;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("NewChart", "Home")',
+            data: JSON.stringify({
+                "CourseName": "Course Name",
+                count: Count,
+                
+            }),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (chData) {
+                debugger;
+                var aData = chData;
+                var aLabels = aData[0];
+                var aDatasets1 = aData[1];
+                //For Pie Chart
+                var ctx1 = document.getElementById("myChartPie").getContext('2d');
+                var myChart = new Chart(ctx1, {
+                    type: 'pie',
+                    height: "230px",
+                    width: "300px",
+                    responsive: false,
+                    animation: false,
+                    legend: { position: 'bottom' },
+                    options: {
+                        // This chart will not respond to mousemove, etc
+                    events: ['click']
+                    }
+                });
+
+            }
+        });
+        }
+    });
+</script>
+<input type="button" value="click" id="courseNamePieChart" />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td id="courseName">
+                @Html.DisplayFor(modelItem => item.CourseName)
+            </td>
+            <td id="CourseCount">
+                @Html.HiddenFor(modelItem => item.count)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditCourse", "Home", new { id =item.Id }, null) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+<div id="myChartPie">
+
+</div>

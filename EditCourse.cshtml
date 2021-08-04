@@ -1,0 +1,13 @@
+﻿@model LoginTask.Models.CourseModel
+@{
+    ViewBag.Title = "EditCourse";
+}
+
+<h2>Edit Course</h2>
+@using (Html.BeginForm())
+{
+    @Html.Label("Enter Course Name")
+    @Html.EditorFor(x => x.CourseName)
+    <input type="submit" value="Save" />
+}
+

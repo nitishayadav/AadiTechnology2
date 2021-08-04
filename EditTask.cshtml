@@ -1,0 +1,21 @@
+﻿@model LoginTask.Models.DailyTask1Model
+@{
+    ViewBag.Title = "EditTask";
+}
+
+<h2>EditTask</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.Id)
+    // @Html.HiddenFor(x => x.CourseId)
+    // @Html.HiddenFor(x => x.TopicId)
+    @Html.HiddenFor(x => x.SubTopicId)
+    @Html.Label("Start Time") @Html.EditorFor(x => x.StartTime)
+    <br />
+    @Html.Label("End Time") @Html.EditorFor(x => x.EndTime)
+    <br />
+    @Html.Label("Estimated Hour") @Html.EditorFor(x => x.EstimatedHr)
+    <br />
+    <input type="submit" value="Save" />
+}

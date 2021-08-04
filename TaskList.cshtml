@@ -1,0 +1,53 @@
+﻿@model IEnumerable<LoginTask.Models.DailyTask1Model>
+@{
+    ViewBag.Title = "TaskList";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
+<h2>TaskList</h2>
+@using (Html.BeginForm("ExportToExcel", "Home", FormMethod.Post))
+{
+    <br />
+    <br />
+    <input type="submit" value="Export to Excel" class="button" />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SubTopic.Topic.Course.CourseName)
+            </th>
+            <th> @Html.DisplayNameFor(model => model.SubTopic.Topic.TopicName)</th>
+            <th> @Html.DisplayNameFor(model => model.SubTopic.SubTopicName)</th>
+            <th>@Html.DisplayNameFor(model => model.StartTime)</th>
+            <th>@Html.DisplayNameFor(model => model.EndTime)</th>
+            <th>@Html.DisplayNameFor(model => model.EstimatedHr)</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubTopic.Topic.Course.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubTopic.Topic.TopicName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubTopic.SubTopicName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstimatedHr)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "EditTask", "Home", new { id = item.Id }, null) |
+                        @Html.ActionLink("Delete", "DeleteTopic", new { id = item.Id })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+}
